@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -16,6 +17,7 @@ public class Event {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name")
@@ -27,6 +29,10 @@ public class Event {
 
     @Column(name = "left_capacity")
     private Integer leftCapacity;
+
+
+    @Column(name = "ticket_price")
+    private BigDecimal ticketPrice;
 
 
     @ManyToOne
