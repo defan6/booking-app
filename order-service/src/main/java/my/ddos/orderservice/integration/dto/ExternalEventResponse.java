@@ -1,4 +1,4 @@
-package my.ddos.inventoryservice.integration;
+package my.ddos.orderservice.integration.dto;
 
 import java.math.BigDecimal;
 

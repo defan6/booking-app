@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class KafkaProducer {
 
-    private final KafkaTemplate<String, Object> kafkaTemplate;
+    private final KafkaTemplate<String, EventKafkaBooking> kafkaTemplate;
 
     public void sendBookingEvent(EventKafkaBooking eventKafkaBooking){
         Message<Object> kafkaMessage = buildMessage(eventKafkaBooking);
