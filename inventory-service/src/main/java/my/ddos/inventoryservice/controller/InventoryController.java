@@ -13,31 +13,31 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/inventory")
 public class InventoryController {
 
     private final InventoryService inventoryService;
 
 
-    @GetMapping("/inventory/events")
+    @GetMapping("/events")
     public ResponseEntity<List<EventResponse>> getAllEvents(){
         return ResponseEntity.ok(inventoryService.getAllEvents());
     }
 
 
-    @GetMapping("/inventory/venues/{venueId}")
+    @GetMapping("/venues/{venueId}")
     public ResponseEntity<VenueResponse> getVenue(@PathVariable("venueId") Long venueId){
         return ResponseEntity.ok(inventoryService.getVenue(venueId));
     }
 
 
-    @GetMapping("/inventory/events/{eventId}")
+    @GetMapping("/events/{eventId}")
     public ResponseEntity<ExternalEventResponse> getEvent(@PathVariable("eventId") Long eventId){
         return ResponseEntity.ok(inventoryService.getEvent(eventId));
     }
 
 
-    @PutMapping("/inventory/event/{eventId}/capacity/{capacity}")
+    @PutMapping("/event/{eventId}/capacity/{capacity}")
     public ResponseEntity<ExternalEventResponse> updateEvent(@PathVariable("eventId") Long eventId,
                                                      @PathVariable("capacity") Integer capacity){
         return ResponseEntity.ok(inventoryService.updateEvent(eventId, capacity));
