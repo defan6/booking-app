@@ -25,7 +25,11 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeExchange(auth -> auth
-                        .anyExchange().authenticated()
+                        .pathMatchers("/swagger-ui.html", "/swagger-ui/**", "/docs/**", "/v3/api-docs/**",
+                                "/swagger-resources/**", "/api-docs/**", "/webjars/**")
+                        .permitAll()
+                        .anyExchange()
+                        .authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(Customizer.withDefaults())
