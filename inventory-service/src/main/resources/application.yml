@@ -14,9 +14,6 @@ spring:
     init:
       platform: postgres
       mode: never
-  liquibase:
-    change-log: classpath:db/changelog/db.changelog-master.yaml
-    enabled: true
 
 springdoc:
   swagger-ui:

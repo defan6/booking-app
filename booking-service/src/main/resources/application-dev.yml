@@ -5,3 +5,6 @@ spring:
     password: root
 server:
   port: 7082
+inventory:
+  service:
+    url: 7081
