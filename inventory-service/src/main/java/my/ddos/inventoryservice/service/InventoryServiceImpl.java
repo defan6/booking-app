@@ -13,6 +13,8 @@ import my.ddos.inventoryservice.model.dto.VenueResponse;
 import my.ddos.inventoryservice.model.entity.Event;
 import my.ddos.inventoryservice.repository.EventRepository;
 import my.ddos.inventoryservice.repository.VenueRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,12 +33,10 @@ public class InventoryServiceImpl implements InventoryService{
     private final VenueMapper venueMapper;
 
     @Override
-    public List<EventResponse> getAllEvents() {
+    public Page<EventResponse> getAllEvents(Pageable pageable) {
         return eventRepository
-                .findAll()
-                .stream()
-                .map(eventMapper::toResponse)
-                .toList();
+                .findAll(pageable)
+                .map(eventMapper::toResponse);
     }
 
     @Override
