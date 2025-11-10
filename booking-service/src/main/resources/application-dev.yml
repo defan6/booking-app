@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5442/dev_customer_db
+    username: postgres
+    password: root
+server:
+  port: 7082
+inventory:
+  service:
+    url: 7081

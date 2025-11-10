@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5442/dev_order_db
+    username: postgres
+    password: root
+server:
+  port: 7083

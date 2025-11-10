@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: add_ticket_price_to_events
+      author: defan6
+      preConditions:
+        - tableExists:
+            tableName: events
+        - not:
+            - columnExists:
+                tableName: events
+                columnName: ticket_price
+      changes:
+        - addColumn:
+            tableName: events
+            columns:
+              - column:
+                  name: ticket_price
+                  type: DECIMAL(10, 2)
+                  constraints:
+                    nullable: false
+                  defaultValueNumeric: 10.00
+      rollback:
+        - dropColumn:
+            tableName: events
+            columnName: ticket_price
+

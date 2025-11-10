@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: defan6
+      preConditions:
+        - not:
+            - tableExists:
+                tableName: events
+        - tableExists:
+            tableName: venues
+      changes:
+        - createTable:
+            tableName: events
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: total_capacity
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: left_capacity
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: venue_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: events
+            baseColumnNames: venue_id
+            constraintName: fk_event_venue
+            referencedTableName: venues
+            referencedColumnNames: id
+            onDelete: CASCADE
+      rollback:
+        - dropForeignKeyConstraint:
+            baseTableName: events
+            constraintName: fk_event_venue
+            onFail: MARK_RAN
+        - dropTable:
+            tableName: events
+            onFail: MARK_RAN

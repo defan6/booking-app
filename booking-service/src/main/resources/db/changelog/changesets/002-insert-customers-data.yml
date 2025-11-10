@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: defan6
+      preConditions:
+        - tableExists:
+            tableName: customers
+      changes:
+        - sql:
+            sql: |
+              INSERT INTO customers (name, email, address) VALUES
+              ('John Smith', 'john.smith@email.com', '123 Main St, New York, NY'),
+              ('Emma Johnson', 'emma.johnson@email.com', '456 Oak Ave, Los Angeles, CA'),
+              ('Michael Brown', 'michael.b@email.com', '789 Pine Rd, Chicago, IL'),
+              ('Sarah Davis', 'sarah.davis@email.com', '321 Elm St, Houston, TX'),
+              ('David Wilson', 'david.wilson@email.com', '654 Maple Dr, Phoenix, AZ'),
+              ('Lisa Miller', 'lisa.m@email.com', '987 Cedar Ln, Philadelphia, PA'),
+              ('James Taylor', 'james.t@email.com', '147 Birch St, San Antonio, TX'),
+              ('Jennifer Anderson', 'jennifer.a@email.com', '258 Walnut Ave, San Diego, CA'),
+              ('Robert Martinez', 'robert.m@email.com', '369 Spruce Way, Dallas, TX'),
+              ('Maria Garcia', 'maria.g@email.com', '741 Willow Rd, San Jose, CA'),
+              ('William Lee', 'william.lee@email.com', '852 Poplar St, Austin, TX'),
+              ('Jessica White', 'jessica.w@email.com', '963 Magnolia Dr, Jacksonville, FL'),
+              ('Christopher Harris', 'chris.h@email.com', '159 Redwood Blvd, San Francisco, CA'),
+              ('Amanda Clark', 'amanda.c@email.com', '753 Sequoia St, Columbus, OH'),
+              ('Daniel Lewis', 'daniel.l@email.com', '456 Aspen Ave, Charlotte, NC'),
+              ('Michelle Walker', 'michelle.w@email.com', '852 Sycamore Ln, Indianapolis, IN'),
+              ('Kevin Hall', 'kevin.hall@email.com', '963 Chestnut St, Seattle, WA'),
+              ('Nicole Young', 'nicole.y@email.com', '147 Palm Dr, Denver, CO'),
+              ('Matthew King', 'matthew.k@email.com', '258 Olive St, Washington, DC'),
+              ('Stephanie Scott', 'stephanie.s@email.com', '369 Hickory Rd, Boston, MA')
+      rollback:
+        - delete:
+            tableName: customers
+            where: "id IS NOT NULL"

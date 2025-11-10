@@ -1,0 +1,11 @@
+inventory:
+  service:
+    url: http://localhost:7081
+booking:
+  service:
+    url: http://localhost:7082
+order:
+  service:
+    url: http://localhost:7083
+server:
+  port: 7080
