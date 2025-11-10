@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5442/prod_inventory_db
+    username: postgres
+    password: root
+
+server:
+  port: 8081

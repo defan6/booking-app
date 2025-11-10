@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: defan6
+      preConditions:
+        - not:
+            - tableExists:
+                tableName: venues
+                schemaName: public
+      changes:
+        - createTable:
+            tableName: venues
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: total_capacity
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+      rollback:
+        - dropTable:
+            tableName: venues
+            onFail: MARK_RAN
