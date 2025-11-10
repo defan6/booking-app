@@ -9,6 +9,9 @@ import my.ddos.inventoryservice.service.InventoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -20,7 +23,8 @@ public class InventoryController {
 
 
     @GetMapping("/events")
-    public ResponseEntity<List<EventResponse>> getAllEvents(){
+    public ResponseEntity<List<EventResponse>> getAllEvents(DataSource dataSource) throws SQLException {
+        Connection connection = dataSource.getConnection();
         return ResponseEntity.ok(inventoryService.getAllEvents());
     }
 
