@@ -6,6 +6,8 @@ import my.ddos.inventoryservice.model.dto.VenueResponse;
 import my.ddos.inventoryservice.model.dto.EventResponse;
 import my.ddos.inventoryservice.integration.ExternalEventResponse;
 import my.ddos.inventoryservice.service.InventoryService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +25,8 @@ public class InventoryController {
 
 
     @GetMapping("/events")
-    public ResponseEntity<List<EventResponse>> getAllEvents(DataSource dataSource) throws SQLException {
-        Connection connection = dataSource.getConnection();
-        return ResponseEntity.ok(inventoryService.getAllEvents());
+    public ResponseEntity<Page<EventResponse>> getAllEvents(Pageable pageable){
+        return ResponseEntity.ok(inventoryService.getAllEvents(pageable));
     }
 
 
